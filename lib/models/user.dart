@@ -4,29 +4,21 @@ import 'dart:convert';
 
 class User {
   String uid;
-  bool isAnonymous;
   String pseudo;
-  String email;
 
   User({
     @required this.uid,
-    @required this.isAnonymous,
     this.pseudo,
-    this.email,
   });
 
   factory User.fromJson(Map<String, dynamic> json) => new User(
         uid: json["uid"],
-        isAnonymous: json["isAnonymous"],
         pseudo: json["pseudo"] ?? null,
-        email: json["email"] ?? null,
       );
 
   Map<String, dynamic> toJson() => {
         "uid": uid,
-        "isAnonymous": isAnonymous,
         "pseudo": pseudo ?? null,
-        "email": email ?? null,
       };
 
   factory User.fromDocument(DocumentSnapshot doc) {

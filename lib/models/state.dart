@@ -43,7 +43,7 @@ class StateModel extends ChangeNotifier {
   Future<StateModel> signInAnonymous() async {
     FirebaseUser firebaseUser =
         (await FirebaseAuth.instance.signInAnonymously()).user;
-    User user = User(uid: firebaseUser.uid, isAnonymous: true);
+    User user = User(uid: firebaseUser.uid);
     await StoreLocal().storeUserLocal(user);
     await DatabaseService(uid: firebaseUser.uid).updateUserDataAnonymous();
     this.updateStateModel(firebaseUser, user);
